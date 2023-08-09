@@ -1,13 +1,18 @@
 html, body {
   height: 100%;
   overflow: hidden;
-  background: radial-gradient(circle, white, rgba(0, 0, 0, 0.5));
-  background-color: #2F2F31;
+  
+  background-color: white;
   background-blend-mode: overlay;
 }
+#moves{
+  position: absolute;
+  top: 0;
+}
 
-.credits {
+.options {
   width: 100%;
+  position: absolute;
   top: 90%;
 }
 
