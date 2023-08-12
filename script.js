@@ -3,12 +3,12 @@ var colors = ['blue', 'green', 'white', 'yellow', 'orange', 'red'];
 var pieces = document.getElementsByClassName('piece');
 
 // Initialize variables
+var moves = loadFromLocalStorage()? loadFromLocalStorage(): [];
 var startTime = 0;
-var moves = []; // Array to store player's moves
+alert(moves)
 
 // Function to scramble the cube
 function scrambleCube() {
-  startTime = Date.now(); // Reset the start time
   var scrambleMoves = [
     { face: 0, cw: 1 }, { face: 0, cw: 0 }, { face: 1, cw: 1 }, { face: 1, cw: 0 },
     { face: 2, cw: 1 }, { face: 2, cw: 0 }, { face: 3, cw: 1 }, { face: 3, cw: 0 },
@@ -23,7 +23,9 @@ function scrambleCube() {
       recordMove(randomMove); // Record the move
       animateRotation(randomMove.face, randomMove.cw, Date.now()); // Animate the rotation
       i++;
+      
     } else {
+      startTime = Date.now();
       clearInterval(scrambleInterval); // Stop the interval when done
     }
   }, 250); // Interval between rotations
@@ -209,7 +211,7 @@ function reverseMoves() {
       clearInterval(solveInterval);
       moves = [];
       updateMovesDisplay();
-      saveToLocalStorage();
+      localStorage.clear("cube_data");
     }
   }, 300);
 }
@@ -217,7 +219,7 @@ function reverseMoves() {
 //function to update the timer in dom
 
 function updateTimerDisplay() {
-    var currentTime = Date.now() - startTime;
+    var currentTime = startTime ? Date.now() - startTime : 0;
 
     var timeUnits = [
         { divisor: 604800000, label: 'week' },
@@ -261,25 +263,30 @@ function saveToLocalStorage() {
 // Function to load data from local storage
 function loadFromLocalStorage() {
   var savedData = localStorage.getItem('cube_data');
+  var derivedMoves = [];
+
   if (savedData) {
     savedData = JSON.parse(savedData);
     moves = savedData.moves;
     startTime = savedData.startTime;
     updateMovesDisplay(savedData);
-    //localStorage.clear('cube_data');
-    start();
+    return moves;
   } else {
     alert("No saved data found. Starting a new game.");
+    return null;
   }
 }
 
 // Call the loadFromLocalStorage function to load data on page load
-window.addEventListener('load', loadFromLocalStorage)
+loadFromLocalStorage();
 
+// Call the loadFromLocalStorage function to load data on page load
 
-
-
-
-function start(){
-  
+function updateFromSave() {
+  var i = 0; var animateInterval = setInterval(function() { if (i < moves.length) { var move = moves[i]; animateRotation(move.face, move.cw, Date.now()); i++; } else {
+    clearInterval(animateInterval); } 
+  }, 200);
+  // Interval between rotations 
 }
+// Call the function to animate the cube from loaded moves
+updateFromSave();
