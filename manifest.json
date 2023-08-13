@@ -1,15 +1,20 @@
 {
-  "name": "Rubik Cube by CAJETAN",
+  "name": "Cubik",
   "short_name": "Cubik",
   "description": "2×2, 3×3, 4×4, 5×5 Rubik Cube puzzle",
   "icons": [
     {
       "src": "./icon.png",
-      "sizes": "192x192",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon2.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "start_url": "/",
+  "start_url": "https://cajetanjohn.github.io/Rubik/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000"

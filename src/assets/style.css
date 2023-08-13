@@ -23,6 +23,12 @@
   outline: none;
 }
 
+:root{
+  --bg1: white;
+  --bg2:rgba(0, 0, 0, 0.2);
+  --textColor:rgba(0, 0, 0, 0.5);
+}
+
 html {
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
@@ -43,6 +49,7 @@ body {
   overflow: hidden;
   height: 100%;
   font-size: 5rem;
+
 }
 
 .icon {
@@ -78,7 +85,7 @@ body {
 }
 .range__track-line {
   position: absolute;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--bg2);
   height: 2px;
   top: 50%;
   margin-top: -1px;
@@ -193,7 +200,7 @@ body {
 }
 .stats > i {
   display: block;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--textColor);
   font-size: 0.9em;
 }
 .stats > b {
@@ -258,7 +265,7 @@ body {
   position: absolute;
   pointer-events: none;
   font-size: 1.2em;
-  color: rgba(0, 0, 0, 0.25);
+  color: var(--textColor);
   opacity: 0;
 }
 .btn:after {
@@ -356,7 +363,7 @@ body {
   justify-content: center;
 }
 .link{
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--textColor);
   z-index: 10 !important;
   text-decoration: none;
 }
@@ -364,4 +371,17 @@ body {
 .hidden{
   display: none;
   
+}
+
+.install-button{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: none;
+  padding: 5px;
+  font-size: inherit;
+  outline: none;
+  border: none;
+  display: none;
+  white-space: nowrap;
 }
