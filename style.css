@@ -345,10 +345,11 @@ body {
 }
 
 .credits{
-  position: absolute;
+  position: fixed;
   bottom: 30px;
   display: inline-block;
   text-align: center;
+  z-index: 10;
 }
 .link{
   color: rgba(0, 0, 0, 0.5);
