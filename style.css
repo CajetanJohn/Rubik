@@ -350,6 +350,9 @@ body {
   display: inline-block;
   text-align: center;
   z-index: 10;
+  width: 100%;
+  display: flex;
+  gap: 15px;
 }
 .link{
   color: rgba(0, 0, 0, 0.5);
